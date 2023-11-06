@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <style>
+        table, td, th{
+            border:1px solid rgb(129, 29, 195);
+            line-height: 150%;
+        }
+    </style>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Rent Page</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+            background-color: rgb(202, 241, 202);
+            text-align: center;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			background-color: #333;
+			color: white;
+			padding: 20px;
+			text-align: center;
+		}
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+		table, td, th {
+			border: 1px solid rgb(129, 29, 195);
+			line-height: 150%;
+		}
+		tr:nth-child(odd) {
+			background-color: #ddd;
+		}
+		form {
+			margin: 10px 0;
+		}
+		form input[type="text"] {
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			padding: 6px;
+			font-size: 14px;
+		}
+		form input[type="submit"] {
+			border: 1px solid #333;
+			border-radius: 4px;
+			padding: 6px;
+			font-size: 14px;
+			background-color: #333;
+			color: white;
+			cursor: pointer;
+		}
+		form input[type="submit"]:hover {
+			background-color: #777;
+		}
+        button {
+			border: 1px solid #333;
+			border-radius: 4px;
+			padding: 6px;
+			font-size: 14px;
+			background-color: #333;
+			color: white;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #777;
+		}
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        form {
+			margin: 10px 0;
+		}
+		form input[type="text"] {
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			padding: 6px;
+			font-size: 14px;
+		}
+		form input[type="submit"] {
+			border: 1px solid #333;
+			border-radius: 4px;
+			padding: 6px;
+			font-size: 14px;
+			background-color: #333;
+			color: white;
+			cursor: pointer;
+		}
+		form input[type="submit"]:hover {
+			background-color: #777;
+		}
+        button {
+			border: 1px solid #333;
+			border-radius: 4px;
+			padding: 6px;
+			font-size: 14px;
+			background-color: #333;
+			color: white;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #777;
+		}
+	</style>
+</head>
+
+    <body>
+        <button type="submit" style="float: left;"><a href="http://127.0.0.1:5000/">Entry Page</a></button>
+<!--Message for latest activity-->
+        {%if message%}
+        <h5>{{message}}</h5>
+        {%endif%}
+
+<!--Info for text box and Text boxes-->
+        <h4>{{"Show Avaiable Accomodations With Chosen Creteria"}}</h4>
+        <form action="#">
+            <label for="Location">Side - Location   </label>
+            <select name="Camp Side" id="Side">
+                <option value="Forest">Forest</option>
+                <option value="Sea">Sea</option>
+            </select>
+            <select name="Camp Location" id="Location">
+                {% for location in locations %}
+                    <option value="{{location}}">{{location}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Submit" />
+      </form>
+<!--Database table given as a matrix and first row is names of coloumns at table-->
+        <table style="width:100%"> 
+            <tr>
+                {% for value in column_names %}
+                    <td>{{value}}</td>
+                {% endfor %}
+                <tr class="blank_row">
+                    <td bgcolor="#AE00FF" colspan="10">&nbsp;</td>
+                </tr>
+                {% for item in table %}
+                    {% for value in item %}
+                        <td>{{value}}</td>
+                    {% endfor %}
+                    <tr class="blank_row">
+                        <td bgcolor="#AAAAA" colspan="10">&nbsp;</td>
+                    </tr>
+                {% endfor %}
+            </tr>
+        </table>
+        {% if count[0] == 0 %}
+            <form method="post">
+                <label for="accomodationid">Accomodation ID:</label><br>
+                <input type="text" id="accomodationid" name="accomodationid"><br>
+                <label for="startingdate">Starting Date:</label><br>
+                <input type="date" id="startingdate" name="startingdate"><br>
+                <label for="enddate">Ending Date:</label><br>
+                <input type="date" id="enddate" name="enddate"><br>
+            {% for i in count %}
+            <h3>{{i+1}}{{") Person Information"}}</h3>
+                <label for="firstName">First Name:</label><br>
+                <input type="text" id="firstName" name="firstName{{i+1}}"><br>
+                <label for="lastName">Last Name:</label><br>
+                <input type="text" id="lastName" name="lastName{{i+1}}"><br>
+                <label for="personalId">Personal ID:</label><br>
+                <input type="text" id="personalId" name="personalId{{i+1}}"><br>
+                <label for="phoneNumber">Phone Number:</label><br>
+                <input type="text" id="phoneNumber" name="phoneNumber{{i+1}}"><br>
+                <label for="birthDate">Birth Date:</label><br>
+                <input type="date" id="birthDate" name="birthDate{{i+1}}"><br>
+                <label for="salary">Salary:</label><br>
+                <input type="number" id="salary" name="salary{{i+1}}"><br>
+                <div class="dropdown">
+                    <h5 style="font-weight: normal;">Gender:</h5>
+                    <select name="gender{{i+1}}">
+                        <option value="F">Female</option>
+                        <option value="M">Male</option>
+                    </select>
+                </div>
+            {% endfor %}
+            <h4>{{a}}</h4>
+            <input type="submit" value="Submit">
+            </form>
+        {% else %}
+            <h3>{{"Reserve Accomodation"}}</h3>
+            <label for="customer_count">People Count:</label><br>
+            <form method="post">
+            <input type="text" id="customer_count" name="customer_count"><br>
+            <input type="submit" value="Submit">
+            </form>
+        {% endif %}
+    </body>
+
+</html>
+
+

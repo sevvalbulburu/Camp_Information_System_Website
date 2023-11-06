@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Thank You</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #eee;
+			text-align: center;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			background-color: #333;
+			color: white;
+			padding: 20px;
+			text-align: center;
+		}
+		h1 {
+			font-size: 3em;
+			color: #f00;
+			text-shadow: 0 0 10px #fff;
+			animation: slideInFromLeft 1s ease-out forwards;
+		}
+		@keyframes slideInFromLeft {
+			from {
+				transform: translateX(-100%);
+			}
+			to {
+				transform: translateX(0%);
+			}
+		}
+		h2 {
+			font-size: 2em;
+			color: #0f0;
+			animation: slideInFromRight 1s ease-out forwards;
+			animation-delay: 0s;
+		}
+        h3 {
+			font-size: 1em;
+			color: rgb(136, 0, 255);
+			animation: slideInFromRight 1s ease-out forwards;
+		}
+		@keyframes slideInFromRight {
+			from {
+				transform: translateX(100%);
+			}
+			to {
+				transform: translateX(0%);
+			}
+		}
+        #developer {
+			animation: growRotate 3s;
+			display: inline-block;
+			font-size: 20px;
+			text-align: center;
+			transform-origin: center;
+		}
+		@keyframes growRotate {
+			0% {
+				transform: rotate(0deg) scale(0.5);
+			}
+			100% {
+				transform: rotate(360deg) scale(1);
+			}
+		}
+	</style>
+</head>
+<body>
+    <button type="submit" style="float: right;"><a href="http://127.0.0.1:5000/">Back To Site</a></button>
+	<header>
+		<h1>Thank You</h1>
+	</header>
+	<h2>for listening!</h2>
+    <div id="developer">
+		<h3>Developed by:</h3>
+		<h3>G20:</h3>
+		<h3>Mehmet Alperen Ölçer 20011023</h3>
+		<h3>Şevval Bulburu 19011038</h3>
+		<h3>Barış Bakım 20011629</h3>
+	</div>
+</body>
